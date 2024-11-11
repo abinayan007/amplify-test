@@ -26,22 +26,44 @@ function PrivateRoute({ children, ...rest }) {
   );
 }
 
+// function App() {
+//   return (
+//     // <Home/>
+//     <Router>
+//       <div>
+//         <Routes>
+//           <Route path="/" exact component={Home} />
+//           <Route path="/login" component={Login} />
+//           {/* <Route>
+//             <PrivateRoute path="/dashboard">
+//               <Dashboard />
+//             </PrivateRoute>
+//           </Route> */}
+//         </Routes>
+//       </div>
+//     </Router>
+//   );
+// }
 function App() {
   return (
-    <Home/>
-    // <Router>
-    //   <div>
-    //     <Routes>
-    //       <Route path="/" exact component={Home} />
-    //       <Route path="/login" component={Login} />
-    //       {/* <Route>
-    //         <PrivateRoute path="/dashboard">
-    //           <Dashboard />
-    //         </PrivateRoute>
-    //       </Route> */}
-    //     </Routes>
-    //   </div>
-    // </Router>
+    <Router>
+      <div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          
+          {/* Private Route for Dashboard */}
+          <Route 
+            path="/dashboard" 
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            } 
+          />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
